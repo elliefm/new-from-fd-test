@@ -44,6 +44,7 @@ int main (int argc __attribute__((unused)),
 
         /* perl script gets the write end as fd 3 */
         r = dup2(child_pipe[1], PIPE_WRITE_FD);
+        if (r != child_pipe[1]) close(child_pipe[1]);
         if (r < 0) fatal(EX_OSERR, "dup2");
         fcntl_unset(PIPE_WRITE_FD, FD_CLOEXEC);
 
