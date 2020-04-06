@@ -27,6 +27,10 @@ pipe, so that the effect is obvious:
 
 * the second read in the parent doesn't see EOF until the perl script exits!
 
+(In the real version of this, the perl script is a long-running daemon.
+It is unacceptable for the parent to not see EOF on the pipe until it
+exits.)
+
 To try it yourself:
 
 ```
